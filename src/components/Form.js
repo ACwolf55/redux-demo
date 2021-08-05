@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useState } from "react";
-import {nameInput} from "../redux/NameReducer"
+import {nameInput} from '../redux/NameReducer'
 
 function Form(props) {
   const [ nameState, setNameState ] = useState('');
@@ -20,12 +20,17 @@ function Form(props) {
       <br />
       <button onClick={handleSubmit}>Submit</button>
       <p>input test - {nameState}</p>
+      <p>redux test - {props.words}</p>
     </div>
   );
 }
 
 function mapStateToProps(state) {
-  return { reduxName: state.reduxName };
+  //Notice how instead of just returning state like we do in Header.js & Footer.js
+  //We decided that we will destructure the state so we just call words on line 23.
+  return {
+    words: state.NameReducer.reduxName
+  }
 }
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps,{nameInput})(Form);

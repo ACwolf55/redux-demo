@@ -1,5 +1,5 @@
 
-//STate
+//State
 
 const intialState = {
     reduxName: ''
@@ -7,15 +7,16 @@ const intialState = {
 }
 
     //action constant
+    //We are setting a string to this variable
  const SET_NAME ='SET_NAME'
 
 
  //action creator
 
- export const nameInput=(reduxName)=>{
+ export function nameInput(nameState){
      return{
          type: SET_NAME,
-         payload: reduxName
+         payload: nameState
      }
  }
 
@@ -23,7 +24,7 @@ const intialState = {
  export default function reducer(state = intialState, action) {
     switch (action.type) {
         case SET_NAME:
-            return {...state}
+            return {...state, reduxName:action.payload}
 
         default:
             return state

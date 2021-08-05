@@ -7,7 +7,7 @@ function Footer(props) {
     <div className="footer">
       <h1>Header.js Component</h1>
       <p>
-        Hello, <b>{props.reduxName}</b>
+        Hello, <b>{props.NameReducer.reduxName}</b>
       </p>
     </div>
   );
