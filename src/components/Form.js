@@ -33,4 +33,21 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps,{nameInput})(Form);
+
+// MapDispatchToProps brings in action funcitons from your reducer file
+const mapDispatchToProps = (dispatch) => ({
+	nameInput: (input) => {
+		dispatch(nameInput(input))
+	},       
+  //ex. ↓ having 2nd action to bring in ↓
+  // setSecondAction: (something) => {
+  //   dispatch(secondAction(something))
+  // },
+  
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(Form);
+
+// ↓↓ this would also work to;delete lines 38-47 Since your putting the mapDispatchToProp parameter directly in the connect function
+
+// export default connect(mapStateToProps,{nameInput})(Form);
